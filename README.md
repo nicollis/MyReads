@@ -7,4 +7,4 @@ This project was made for Udacity's React nano Degree program
 - run `npm install`
 - run `npm start`
 
-Alternativly you can view this site live (here)[http://ollis.me/MyReads]
+Alternativly you can view this site live [here](http://ollis.me/MyReads/)
