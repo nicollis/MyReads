@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
 import Bookshelf from './components/Bookshelf'
+import Search from './components/Search'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -46,17 +47,10 @@ class BooksApp extends React.Component {
         )}
         />
         <Route path='/search' render={({history})=>(
-          <div className="search-books">
-            <div className="search-books-bar">
-              <Link className="close-search" to="/">Close</Link>
-              <div className="search-books-input-wrapper">
-                <input type="text" placeholder="Search by title or author"/>
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
-          </div>
+          <Search onShelfSelect={(event)=>{
+            this.changeShelf(event)
+            history.push('/')
+          }}/>
         )}
         />
       </div>
