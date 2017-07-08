@@ -10,7 +10,7 @@ class Book extends Component {
       author: PropTypes.string.isRequired,
       shelf: PropTypes.string.isRequired,
     }),
-    // onChangeSelf: PropTypes.func.isRequired
+    onChangeSelf: PropTypes.func.isRequired
   }
 
   render () {
@@ -18,7 +18,7 @@ class Book extends Component {
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url({Book.url})' }}></div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${Book.url})`}}></div>
           <div className="book-shelf-changer">
             <select>
               <option value="none" disabled>Move to...</option>
