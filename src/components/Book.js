@@ -3,25 +3,25 @@ import PropTypes from 'prop-types'
 
 class Book extends Component {
   static propTypes = {
-    Book: PropTypes.shape({
+    book: PropTypes.shape({
       id: PropTypes.string,
       imageLinks: PropTypes.object.isRequired,
       title: PropTypes.string.isRequired,
       authors: PropTypes.array.isRequired,
       shelf: PropTypes.string.isRequired,
     }),
-    onChangeSelf: PropTypes.func.isRequired
+    onChangeShelf: PropTypes.func.isRequired,
   }
 
   render () {
-    const { Book } = this.props;
+    const { book, onChangeShelf } = this.props;
     return (
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${Book.imageLinks.thumbnail})`}}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
             <div className="book-shelf-changer">
-              <select>
+              <select id={book.id} value={book.shelf} onChange={onChangeShelf}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -30,8 +30,8 @@ class Book extends Component {
               </select>
             </div>
           </div>
-          <div className="book-title">{Book.title}</div>
-          {Book.authors.map((author) => (
+          <div className="book-title">{book.title}</div>
+          {book.authors.map((author) => (
             <div key={author} className="book-authors">{author}</div>
           ))}
         </div>
